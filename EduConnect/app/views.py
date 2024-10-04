@@ -1,9 +1,15 @@
 from django.shortcuts import render , redirect
 from .form import CustomUserCreationForm
+from django.contrib.auth.decorators import login_required
 
 
+ 
 def homepage_view(request):
     return render(request, "app/homepage.html")
+
+@login_required
+def dashboard(request):
+    return render(request,"app/dashboard.html")
 
 def signup(request):
     if request.method == 'POST':
