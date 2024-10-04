@@ -16,13 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
+from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),        # Admin panel for user and content management.
+    path('' , include('app.urls')),
+    path('', views.homepage_view, name='home'),  # Root URL, points to homepage
     path('accounts/', include('django.contrib.auth.urls'))  
 #This automatically includes views for login, logout, password reset, and more. The default URLs are:
 #/accounts/login/
 #/accounts/logout/
 #/accounts/password_change/
 #/accounts/password_reset/
+
+
 ]
